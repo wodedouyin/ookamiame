@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         X/Twitter 去除页面广告 + 推文来源自动展示
 // @namespace    https://greasyfork.org/zh-CN/users/1534803-ookamiame
-// @version      1.2.6
+// @version      1.2.7
 // @description  自动在每条推文下方显示“Twitter for ...”来源，支持登录用户请求头，还原 iOS 插件逻辑；并在页面内改写 HomeTimeline / TweetDetail 响应体，去除广告
 // @author       狼小雨
 // @license      MIT
@@ -1123,7 +1123,7 @@ https://api.twitter.com/2/timeline/conversation/<tweetID>.json?...（这是 Twit
   function fetchTweetSource(tweetID, callback, retry = 1) {
     if (cache.has(tweetID)) return callback(cache.get(tweetID));
 
-    const url = `https://api.twitter.com/2/timeline/conversation/${tweetID}.json?include_ext_alt_text=true&include_reply_count=true&tweet_mode=extended`;
+    const url = `https://x.com/i/api/2/timeline/conversation/${tweetID}.json?tweet_mode=extended&count=1`;
     const headers = buildHeaders();
 
     log(`🌐 请求 ${tweetID}`, headers);
